@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marathon Vitamin Shop | E-commerce</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <a class="logo" href="#inicio" data-view="inicio">Marathon <span>Vitamin Shop</span></a>
+    <div class="nav-links">
+      <a href="#inicio" data-view="inicio">Inicio</a>
+      <a href="#catalogo" data-view="catalogo">Catálogo</a>
+      <a href="#seguimiento" data-view="seguimiento">Mis compras</a>
+      <a href="#empresa" data-view="empresa">Empresa</a>
+      <a href="#contacto" data-view="contacto">Contacto</a>
+      <button class="nav-btn" id="loginNav">Iniciar sesión</button>
+      <button class="cart-btn" id="cartNav">🛒 <span id="cartCount">0</span></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section id="inicio" class="view active">
+    <div class="hero">
+      <div class="hero-text">
+        <p class="tag">OPORTUNIDAD DE CONSULTORÍA 2.1</p>
+        <h1>La E de la vitamina E significa <span>E-commerce</span></h1>
+        <p>Marathon Vitamin Shop es una tienda ficticia de vitaminas y suplementos con catálogo, compras, descuentos, seguimiento y atención en línea.</p>
+        <div class="hero-buttons">
+          <button class="button" data-view="catalogo">Ver catálogo</button>
+          <button class="button secondary" id="heroLogin">Crear cuenta</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="cart-icon">🛒</div>
+        <h3>Compra en línea</h3>
+        <p>Elige tus productos, agrégalos al carrito y realiza una compra de demostración.</p>
+        <div class="mini-stats">
+          <div><strong>14</strong><small>productos</small></div>
+          <div><strong>10%</strong><small>descuento</small></div>
+          <div><strong>$700</strong><small>máximo</small></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="promo-carousel" aria-label="Promociones">
+      <div class="carousel-track" id="promoTrack">
+        <article class="promo-slide"><img src="images/promo-1.png" alt="Promoción 10% de descuento"><div><span>OFERTA</span><h2>10% de descuento</h2><p>Usa el cupón <b>MVS10</b> en tu próxima compra.</p><button class="button" data-view="catalogo">Comprar ahora</button></div></article>
+        <article class="promo-slide"><img src="images/promo-2.png" alt="Nuevos productos"><div><span>NOVEDAD</span><h2>Bienestar para tu día</h2><p>Descubre nuestros productos más pedidos.</p><button class="button" data-view="catalogo">Ver productos</button></div></article>
+        <article class="promo-slide"><img src="images/promo-3.png" alt="Seguimiento de pedidos"><div><span>COMPRA FÁCIL</span><h2>Rastrea tu pedido</h2><p>Al finalizar recibirás un código único de seguimiento.</p><button class="button" data-view="seguimiento">Rastrear pedido</button></div></article>
+      </div>
+      <button class="carousel-arrow prev" id="promoPrev">‹</button><button class="carousel-arrow next" id="promoNext">›</button>
+      <div class="carousel-dots" id="promoDots"></div>
+    </section>
+
+    <div class="consulting">
+      <h2>¿Cómo se relaciona con el caso?</h2>
+      <div class="consult-grid">
+        <div><b>01 · Elementos</b><p>Clientes, productos, inventario, carrito, pedidos, pagos, entregas y atención.</p></div>
+        <div><b>02 · Alcance</b><p>La plataforma administra la venta en línea y deja servicios especializados como pago y paquetería a terceros.</p></div>
+        <div><b>03 · Gestión</b><p>La empresa controla catálogo, clientes, inventario y pedidos; utiliza proveedores externos para servicios especializados.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalogo" class="view">
+    <div class="page-head">
+      <p class="tag">CATÁLOGO</p>
+      <h2>Encuentra tu producto</h2>
+      <p>Precios inventados para este proyecto académico. Ningún producto supera los $700 MXN.</p>
+    </div>
+    <div class="shop-tools">
+      <input id="searchInput" type="search" placeholder="🔎 Buscar vitaminas, minerales, energía...">
+      <select id="categoryFilter">
+        <option value="todos">Todas las categorías</option>
+        <option value="Vitaminas">Vitaminas</option>
+        <option value="Minerales">Minerales</option>
+        <option value="Bienestar">Bienestar</option>
+        <option value="Energía">Energía</option>
+      </select>
+    </div>
+    <div class="rating-note">⭐ <b>Más pedidos</b> aparecen destacados según las compras de demostración.</div>
+    <div id="productGrid" class="products"></div>
+  </section>
+
+  <section id="seguimiento" class="view">
+    <div class="page-head">
+      <p class="tag">MIS COMPRAS</p>
+      <h2>Información y seguimiento</h2>
+      <p>Consulta los pedidos creados desde esta demostración.</p>
+    </div>
+    <div class="tracking-box">
+      <h3>🔎 Rastrea tu pedido</h3>
+      <p>Escribe el código que recibiste al confirmar tu compra.</p>
+      <div class="tracking-form"><input id="trackingInput" placeholder="Ej. MVS-2026-123456"><button class="button" id="trackBtn">Rastrear</button></div>
+      <div id="trackingResult"></div>
+    </div>
+    <div id="ordersArea"></div>
+  </section>
+
+  <section id="empresa" class="view">
+    <div class="page-head">
+      <p class="tag">MARATHON VITAMIN SHOP</p>
+      <h2>Información de la empresa</h2>
+    </div>
+    <div class="company-grid">
+      <article class="info-card">
+        <div class="big-icon">🌿</div>
+        <h3>¿Quiénes somos?</h3>
+        <p>Marathon Vitamin Shop es una empresa ficticia creada para este proyecto escolar. Se presenta como una tienda mexicana dedicada a la comercialización de vitaminas y productos de bienestar.</p>
+        <p><b>Año de fundación:</b> 2018</p>
+        <p><b>Ciudad de origen:</b> Ciudad de México</p>
+        <p><b>Teléfono:</b> 0000000000</p>
+        <p><b>Correo:</b> contacto@marathonvitaminshop.com</p>
+      </article>
+      <article class="info-card founder">
+        <div class="founder-avatar">👨🏻‍💼</div>
+        <h3>Fundador</h3>
+        <p><b>Nombre:</b> Daniel Martínez Rivera</p>
+        <p>Daniel Martínez Rivera es un personaje ficticio creado para esta actividad. Según la historia de la empresa, comenzó Marathon Vitamin Shop después de trabajar varios años en la distribución de productos de bienestar.</p>
+        <p>Su objetivo fue crear una tienda sencilla que permitiera a los clientes conocer los productos, comparar opciones y recibir sus compras en casa.</p>
+      </article>
+    </div>
+    <div class="mission">
+      <h3>Misión y visión</h3>
+      <p><b>Misión:</b> ofrecer una experiencia de compra en línea sencilla, organizada y accesible.</p>
+      <p><b>Visión:</b> convertirse en una tienda digital reconocida por su atención y facilidad de compra.</p>
+    </div>
+  </section>
+
+  <section id="contacto" class="view">
+    <div class="page-head">
+      <p class="tag">ATENCIÓN AL CLIENTE</p>
+      <h2>¿Necesitas ayuda?</h2>
+      <p>Envíanos un mensaje. Esta sección funciona como demostración y guarda tu consulta en el navegador.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Marathon Vitamin Shop</h3>
+        <p>📞 <b>0000000000</b></p>
+        <p>✉️ contacto@marathonvitaminshop.com</p>
+        <p>📍 Av. Bienestar 120, Ciudad de México</p>
+        <p>🕘 Lunes a viernes: 9:00 a 18:00</p>
+      </div>
+      <form id="contactForm" class="contact-form">
+        <input id="contactName" required placeholder="Tu nombre">
+        <input id="contactEmail" type="email" required placeholder="Tu correo">
+        <select id="contactTopic" required>
+          <option value="">Selecciona un tema</option>
+          <option>Mi pedido</option>
+          <option>Producto</option>
+          <option>Pago</option>
+          <option>Entrega</option>
+          <option>Otro</option>
+        </select>
+        <textarea id="contactMessage" required rows="5" placeholder="Escribe tu mensaje"></textarea>
+        <button class="button" type="submit">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<div id="cartModal" class="modal hidden">
+  <div class="modal-box cart-box">
+    <button class="close" data-close="cartModal">×</button>
+    <h2>🛒 Mi carrito</h2>
+    <div id="cartItems"></div>
+    <div id="cartSummary"></div>
+    <button class="button full" id="checkoutBtn">Continuar con la compra</button>
+  </div>
+</div>
+
+<div id="loginModal" class="modal hidden">
+  <div class="modal-box">
+    <button class="close" data-close="loginModal">×</button>
+    <div id="authContent">
+      <h2 id="authTitle">Iniciar sesión</h2>
+      <p class="modal-note">Cuenta de demostración guardada solamente en este navegador.</p>
+      <form id="loginForm">
+        <input id="loginEmail" type="email" required placeholder="Correo electrónico">
+        <input id="loginPassword" type="password" required placeholder="Contraseña">
+        <button class="button full" type="submit">Iniciar sesión</button>
+      </form>
+      <button class="text-btn" id="showRegister">¿No tienes cuenta? Crear cuenta</button>
+    </div>
+  </div>
+</div>
+
+<div id="checkoutModal" class="modal hidden">
+  <div class="modal-box">
+    <button class="close" data-close="checkoutModal">×</button>
+    <h2>Confirmar compra</h2>
+    <p class="modal-note">Este es un checkout académico: no se realiza ningún cobro real.</p>
+    <div id="checkoutDetails"></div>
+    <form id="checkoutForm">
+      <input id="buyerName" required placeholder="Nombre completo">
+      <input id="buyerAddress" required placeholder="Dirección de entrega">
+      <label class="coupon-label">¿Tienes un cupón de descuento?</label>
+      <div class="coupon-row"><input id="couponInput" placeholder="Escribe tu cupón"><button type="button" id="applyCoupon">Aplicar</button></div>
+      <div id="couponMessage" class="coupon-message"></div>
+      <select id="paymentMethod" required>
+        <option value="">Forma de pago</option>
+        <option>Tarjeta de crédito</option>
+        <option>Tarjeta de débito</option>
+        <option>PayPal</option>
+        <option>Mercado Pago</option>
+        <option>Transferencia bancaria</option>
+        <option>Depósito en OXXO</option>
+        <option>Pago contra entrega</option>
+      </select>
+      <button class="button full" type="submit">Confirmar pedido</button>
+    </form>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<footer>
+  <p>Proyecto académico · Marathon Vitamin Shop · Información ficticia para fines escolares</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
